@@ -103,12 +103,41 @@
         padding: 0 40px;
         z-index: 100;
         box-shadow: var(--shadow-light);
+        min-height: 64px;
       }
 
-      .brand-header img {
+      .brand-header img,
+      .header-logo {
         height: 46px;
         width: auto;
+        max-width: 120px;
+        min-width: 60px;
+        min-height: 30px;
         margin-right: 24px;
+        object-fit: contain;
+        flex-shrink: 0;
+        display: block;
+        background: transparent;
+        border: none;
+        outline: none;
+      }
+
+      /* Ensure logo never disappears */
+      .header-logo:not([src]),
+      .header-logo[src=""],
+      .header-logo[src*="undefined"],
+      .header-logo[src*="null"] {
+        content: "Maru";
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+        background: var(--brand);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 4px;
       }
 
       .brand-header .deck-title {
@@ -302,9 +331,18 @@
         }
         .brand-header {
           padding: 0 20px;
+          flex-wrap: wrap;
+          gap: 10px;
         }
         .brand-header .deck-title {
           font-size: 14px;
+        }
+        .brand-header img,
+        .header-logo {
+          height: 36px;
+          max-width: 100px;
+          min-width: 50px;
+          margin-right: 16px;
         }
         .reveal section.foh,
         .reveal section.boh {
@@ -392,7 +430,7 @@
   <body>
     <!-- Brand Header -->
     <div class="brand-header">
-      <img src="assets/logo.webp" alt="Maru Logo" />
+      <img src="Assets/logo.webp" alt="Maru Logo" class="header-logo" />
       <div class="deck-title">
         Salon Chatbot – Intelligent Customer Engagement Platform
       </div>
